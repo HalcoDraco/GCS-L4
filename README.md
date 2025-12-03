@@ -11,9 +11,10 @@ In this workshop, you will learn how to:
 
 
 ## Requirements
-* Node LTS (v22.16.0)
+* Node LTS (v24.11.1)
     > We recommend to install node using the available package managers (`nvm` or `fnm`)
     > https://nodejs.org/en/download/package-manager
+    > In cause you already have nvm installed, just run `nvm install` to install and load a working node version
 * IDE (vscode, Intellij or Notepad)
 
 ## 1. Local environment setup
@@ -156,7 +157,7 @@ await ethers.provider.getBlock('latest');
 
 We are ready to deploy our contract to a public testnet. Those are networks that operate similar to main Ethereum network, but Ether has no value and is free no acquire, making them ideal for testing our contract in a real environment at no cost.
 
-To deploy contracts, we need to use an Ethereum node as gateway. In this workshop, we are using a third-party node from [Alchemy](https://www.alchemy.com/). The usage of these nodes incurs some fee, but we will take advantage of the free tier.
+To deploy contracts, we need to use an Ethereum node as gateway. In this workshop, we are using a third-party node from [Alchemy](https://www.alchemy.com/), already deployed by the lecturer. The usage of these nodes incurs some fee, but we will take advantage of the free tier.
 
 First, let's create the wallet we will use to deploy the contract with [Metamask](https://metamask.io/es/).
 
@@ -164,7 +165,7 @@ First, let's create the wallet we will use to deploy the contract with [Metamask
 
 ![](./img/metamask-ext.png)
 
-5.2- Now, configure a new wallet and set a secure password
+5.2- Now, configure a new wallet and set a secure password. There is no need to login, just use the option `Use Secret Recovery and Phrase` and set the password
 
 ![alt text](img/create-wallet.png)
 
@@ -172,15 +173,22 @@ First, let's create the wallet we will use to deploy the contract with [Metamask
 
 ![alt text](img/secure-wallet.png)
 
-5.4- At this point, our wallet should already be configured. Select the `Sepolia` testnet, where we will deploy our contract.
-
+5.4- At this point, our wallet should already be configured. But first, we need to enable the test networks to see our `SepoliaEth` balance
+> Note: `SepoliaEth` is the equivalent to `Eth` in `Sepolia` network
+![alt text](img/change-net-wallet-0.png)
 ![alt text](img/change-net-wallet.png)
+
+Now, we can change the filter to show the `SepoliaEth` balance
+
+![alt text](img/change-bal-wallet.png)
 
 5.5- As you might already know, deploying contracts into the blockchain is not free. Gas is the fee required to successfully conduct a transaction or execute a contract on Ethereum, which is paid with gwei (10^-9 ETH). We will use a `faucet` to send `SepoliaEth` to our wallet.
 
 5.5.1- Get the address of your wallet
 
-![alt text](img/get-address-wallet.png)
+![alt text](img/get-address-wallet0.png)
+
+![alt text](img/get-address-wallet1.png)
 
 5.5.2- Call the Google `faucet` to receive `SepoliaEth`. Google will ask you to login to verify you are a real user. Do not use your `@estudiantat.upc.edu` account
 
@@ -230,6 +238,8 @@ npx hardhat run --network sepolia scripts/deploy.js
 
 > Save the contract address!
 
+:pencil: P6- Include the contract address in the Lab report
+
 ## 6. Etherscan
 At this point, we will take a look into the state of the blockchain using Etherscan (https://sepolia.etherscan.io/)
 
@@ -247,7 +257,6 @@ At this point, we will take a look into the state of the blockchain using Ethers
 
 ![alt text](img/verify-code.png)
 
-:pencil: P6- Include the contract address in the Lab report
 
 ## 7. Interact with the Smart Contract
 
